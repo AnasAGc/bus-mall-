@@ -60,7 +60,7 @@ let index1st;
 let index2ed;
 let index3th;
 
-let x1
+
 
 function randerThreeImag(){
 
@@ -69,18 +69,13 @@ function randerThreeImag(){
     index3th=genrateRandomIndex();
 
 
-    while(index1st===index2ed)[
+    while(index1st===index2ed || index1st===index3th ||index2ed===index3th ){
         index1st=genrateRandomIndex()
-    
-    ];
-    while (index1st===index3th){
-
-        index1st=genrateRandomIndex()
-    };
-    
-    while(index2ed===index3th){
         index2ed=genrateRandomIndex()
+        index3th=genrateRandomIndex()
+
     }
+
     
 
     firstImag.src= Products.arryOFproduct[index1st].sourc
@@ -88,8 +83,10 @@ function randerThreeImag(){
                  
     secendImag.src=Products.arryOFproduct[index2ed].sourc
                    Products.arryOFproduct[index2ed].numShown++
+
     thirdImag.src=Products.arryOFproduct[index3th].sourc
                   Products.arryOFproduct[index3th].numShown++
+
 
 }
 
@@ -97,5 +94,71 @@ function randerThreeImag(){
 
 randerThreeImag()
 console.log(index1st,index2ed,index3th)
+
+
+
+
+let counts = 0;
+let maxAttempts = 10;
+
+
+firstImag.addEventListener('click',trace)
+secendImag.addEventListener('click',trace)
+thirdImag.addEventListener('click',trace)
+
+
+
+function trace (event){
+
+
+      console.log(event.target.id);
+
+        counts++
+
+       if (maxAttempts>=counts){
+
+        if (event.target.id==='the-1st') {
+        Products.arryOFproduct[index1st].numClicks++
+        }
+
+        if (event.target.id==='the-2nd') {
+            Products.arryOFproduct[index2ed].numClicks++
+        }
+
+        if (event.target.id==='the-3ed') {
+            Products.arryOFproduct[index3th].numClicks++
+        }
+        randerThreeImag()
+
+   }else{
+
+         listing ()
+       firstImag.removeEventListener('click',trace)
+       secendImag.removeEventListener('click',trace)
+       thirdImag.removeEventListener('click',trace)
+   }
+}
+
+
+function listing (){
+
+
+    let list=document.getElementById("unList")
+
+    let x;
+    for (let i = 0; i < Products.arryOFproduct.length; i++) {
+        
+        x=Products.arryOFproduct[i]
+
+        let item=document.createElement('li')
+        list.appendChild(item)
+        item.textContent=`The Product name : ${x.name} is Shown ${x.numShown} and it picked ${x.numClicks}  `
+        
+    }
+
+
+    
+}
+
 
 
