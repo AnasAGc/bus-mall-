@@ -5,6 +5,8 @@ let firstImag=document.getElementById("the-1st")
 let secendImag=document.getElementById("the-2nd")
 let thirdImag=document.getElementById("the-3ed")
 
+let container=document.getElementById("sec-one")
+
 function Products (name,sourc){
 
     this.name=name;
@@ -87,10 +89,6 @@ function randerThreeImag(){
 
     }
         
-    
-
-
-
     firstImag.src= Products.arryOFproduct[index1st].sourc
                    Products.arryOFproduct[index1st].numShown++
                  
@@ -106,7 +104,6 @@ function randerThreeImag(){
 
 
 randerThreeImag()
-console.log(index1st,index2ed,index3th)
 
 
 
@@ -115,9 +112,8 @@ let counts = 0;
 let maxAttempts = 10;
 
 
-firstImag.addEventListener('click',trace)
-secendImag.addEventListener('click',trace)
-thirdImag.addEventListener('click',trace)
+
+container.addEventListener('click',trace)
 
 
 
@@ -175,10 +171,9 @@ butten.addEventListener('click', showlish)
 function showlish(){
 
     listing ()
-    firstImag.removeEventListener('click',trace)
-    secendImag.removeEventListener('click',trace)
-    thirdImag.removeEventListener('click',trace)
+    
 
+    container.removeEventListener('click',trace)
     butten.removeEventListener('click', showlish)
 
 }
