@@ -53,9 +53,6 @@ function genrateRandomIndex(){
     return Math.floor(Math.random() * Products.arryOFproduct.length); 
  }
  
-
-
-
 let index1st;
 let index2ed;
 let index3th;
@@ -68,15 +65,31 @@ function randerThreeImag(){
     index2ed=genrateRandomIndex();
     index3th=genrateRandomIndex();
 
+    // let check1st =Products.arryOFproduct[index1st].numShown
+    // let check2st =Products.arryOFproduct[index2ed].numShown
+    // let check3st =Products.arryOFproduct[index3th].numShown
+
 
     while(index1st===index2ed || index1st===index3th ||index2ed===index3th ){
-        index1st=genrateRandomIndex()
-        index2ed=genrateRandomIndex()
-        index3th=genrateRandomIndex()
+      
+        
+        
+        
+        index1st=genrateRandomIndex();
+        index2ed=genrateRandomIndex();
+        index3th=genrateRandomIndex();
+
+        
 
     }
 
+
     
+  
+
+
+
+
 
     firstImag.src= Products.arryOFproduct[index1st].sourc
                    Products.arryOFproduct[index1st].numShown++
@@ -132,12 +145,11 @@ function trace (event){
 
    }else{
 
-         listing ()
-       firstImag.removeEventListener('click',trace)
-       secendImag.removeEventListener('click',trace)
-       thirdImag.removeEventListener('click',trace)
+        console.log('hi')
    }
 }
+
+
 
 
 function listing (){
@@ -160,5 +172,16 @@ function listing (){
     
 }
 
+let butten=document.getElementById('btn')
+butten.addEventListener('click', showlish)
 
+function showlish(){
 
+    listing ()
+    firstImag.removeEventListener('click',trace)
+    secendImag.removeEventListener('click',trace)
+    thirdImag.removeEventListener('click',trace)
+    
+    butten.removeEventListener('click', showlish)
+
+}
