@@ -4,8 +4,12 @@
 let firstImag=document.getElementById("the-1st")
 let secendImag=document.getElementById("the-2nd")
 let thirdImag=document.getElementById("the-3ed")
-
 let container=document.getElementById("sec-one")
+
+
+let nameArray=[];
+let clickArray=[];
+let shownArray=[];
 
 function Products (name,sourc){
 
@@ -15,6 +19,9 @@ function Products (name,sourc){
     this.numShown=0;
     this.index=[];
     Products.arryOFproduct.push(this);
+    nameArray.push(this.name)
+   
+    
 }
 
 
@@ -74,18 +81,13 @@ function randerThreeImag(){
     index2ed=genrateRandomIndex();
     index3th=genrateRandomIndex();
 
-    console.log(arrayOFIndex)
 
 
     while(index1st===index2ed || index1st===index3th ||index2ed===index3th ||arrayOFIndex.includes(index1st) ||arrayOFIndex.includes(index2ed) || arrayOFIndex.includes(index3th)){
       
-        
-        
-        
         index1st=genrateRandomIndex();
         index2ed=genrateRandomIndex();
         index3th=genrateRandomIndex();
-    
 
     }
         
@@ -109,7 +111,7 @@ randerThreeImag()
 
 
 let counts = 0;
-let maxAttempts = 10;
+let maxAttempts = 25;
 
 
 
@@ -143,8 +145,6 @@ function trace (event){
 }
 
 
-
-
 function listing (){
 
 
@@ -158,6 +158,8 @@ function listing (){
         let item=document.createElement('li')
         list.appendChild(item)
         item.textContent=`The Product name : ${x.name} is Shown ${x.numShown} and it picked ${x.numClicks}  `
+        clickArray.push(x.numClicks)
+        shownArray.push(x.numShown)
         
     }
 
@@ -165,15 +167,47 @@ function listing (){
     
 }
 
+
 let butten=document.getElementById('btn')
 butten.addEventListener('click', showlish)
+
+
 
 function showlish(){
 
     listing ()
-    
-
+    chart()
+    console.log(nameArray,clickArray,shownArray)
     container.removeEventListener('click',trace)
     butten.removeEventListener('click', showlish)
 
 }
+
+
+
+
+
+function chart(){
+    let ctx = document.getElementById('myChart')
+    let myChart = new Chart(ctx, { // its an instance 
+        type: 'bar',
+        data: {
+            labels: nameArray, // ['goat away' ,  ... 'sassy goat']
+            datasets: [{
+                label: '# of shown',
+                data: shownArray ,
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                ],
+                borderWidth: 1
+            },{
+              label:'# of clicks',
+              data: clickArray,
+              backgroundColor:[
+                "rgb(192,192,192)"
+              ],
+              borderWidth: 1
+            }]
+        }
+    })
+    }
