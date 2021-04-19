@@ -111,7 +111,7 @@ randerThreeImag()
 
 
 let counts = 0;
-let maxAttempts = 25;
+let maxAttempts = 10;
 
 
 
