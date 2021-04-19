@@ -5,13 +5,13 @@ let firstImag=document.getElementById("the-1st")
 let secendImag=document.getElementById("the-2nd")
 let thirdImag=document.getElementById("the-3ed")
 
-
 function Products (name,sourc){
 
     this.name=name;
     this.sourc=sourc;
     this.numClicks=0;
     this.numShown=0;
+    this.index=[];
     Products.arryOFproduct.push(this);
 }
 
@@ -53,24 +53,29 @@ function genrateRandomIndex(){
     return Math.floor(Math.random() * Products.arryOFproduct.length); 
  }
  
+
+ 
 let index1st;
 let index2ed;
 let index3th;
 
+let arrayOFIndex=[0,0,0];
 
 
 function randerThreeImag(){
+
+  
+    arrayOFIndex=[]
+    arrayOFIndex.push(index1st,index2ed,index3th)
 
     index1st=genrateRandomIndex();
     index2ed=genrateRandomIndex();
     index3th=genrateRandomIndex();
 
-    // let check1st =Products.arryOFproduct[index1st].numShown
-    // let check2st =Products.arryOFproduct[index2ed].numShown
-    // let check3st =Products.arryOFproduct[index3th].numShown
+    console.log(arrayOFIndex)
 
 
-    while(index1st===index2ed || index1st===index3th ||index2ed===index3th ){
+    while(index1st===index2ed || index1st===index3th ||index2ed===index3th ||arrayOFIndex.includes(index1st) ||arrayOFIndex.includes(index2ed) || arrayOFIndex.includes(index3th)){
       
         
         
@@ -78,16 +83,11 @@ function randerThreeImag(){
         index1st=genrateRandomIndex();
         index2ed=genrateRandomIndex();
         index3th=genrateRandomIndex();
-
-        
+    
 
     }
-
-
+        
     
-  
-
-
 
 
 
@@ -143,9 +143,6 @@ function trace (event){
         }
         randerThreeImag()
 
-   }else{
-
-        console.log('hi')
    }
 }
 
@@ -181,7 +178,7 @@ function showlish(){
     firstImag.removeEventListener('click',trace)
     secendImag.removeEventListener('click',trace)
     thirdImag.removeEventListener('click',trace)
-    
+
     butten.removeEventListener('click', showlish)
 
 }
