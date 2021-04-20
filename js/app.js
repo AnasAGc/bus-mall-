@@ -21,7 +21,6 @@ function Products (name,sourc){
     Products.arryOFproduct.push(this);
     nameArray.push(this.name)
    
-    
 }
 
 
@@ -117,6 +116,7 @@ let maxAttempts = 10;
 
 container.addEventListener('click',trace)
 
+getDatals();
 
 
 function trace (event){
@@ -142,6 +142,7 @@ function trace (event){
         randerThreeImag()
 
    }
+   
 }
 
 
@@ -157,14 +158,36 @@ function listing (){
 
         let item=document.createElement('li')
         list.appendChild(item)
-        item.textContent=`The Product name : ${x.name} is Shown ${x.numShown} and it picked ${x.numClicks}  `
+        item.textContent=`The Product name : ${x.name} picked ${x.numClicks}  `
         clickArray.push(x.numClicks)
         shownArray.push(x.numShown)
+
         
     }
 
+         
+}
+
+function saveTols(){
+
+    let strainObject=JSON.stringify(Products.arryOFproduct);
+    localStorage.setItem('objects',strainObject)
+
+}
+
+function getDatals(){
+
+    let data=localStorage.getItem('objects')
+    let arryObject=JSON.parse( data)
+
+    if(arryObject !== null){
+
+        Products.arryOFproduct=arryObject;
+      }
 
     
+    
+
 }
 
 
@@ -172,12 +195,13 @@ let butten=document.getElementById('btn')
 butten.addEventListener('click', showlish)
 
 
-
 function showlish(){
 
+    saveTols()
     listing ()
     chart()
-    console.log(nameArray,clickArray,shownArray)
+  
+
     container.removeEventListener('click',trace)
     butten.removeEventListener('click', showlish)
 
@@ -211,3 +235,5 @@ function chart(){
         }
     })
     }
+
+
