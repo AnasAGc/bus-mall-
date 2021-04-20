@@ -1,6 +1,53 @@
 
-img {
+*{
+    box-sizing: border-box;
+}
+body{
+    
+    background-color: #e4fbff;
+}
+
+
+nav{
+    position: relative;
+    width: 100%;
+    overflow: auto;
+    color: white;
+    background-color: #7868e6;
+    top: 0px;
+    margin: 20px;
+
+
+
+}
+
+ul li {
+    display: inline-block;
+    padding: 20px;
+    text-decoration: none;
+    font-size: 25px;
+
+}
+
+ul li:last-child{
+
+    float: right;
+}
+
+
+
+.sec-one{
+    float: right;
+    width: 75%;
+}
+
+ img{
 
     width: 300px;
     height: 300px;
+}
+.sec-two {
+ 
+    float: left;
+    width: 25%;
 }
